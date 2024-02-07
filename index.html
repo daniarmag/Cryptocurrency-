@@ -19,7 +19,7 @@
       const row = (k, v, i) => {
       // complete tr string
       return `<tr>
-          <td class="w-16 p-2 align-top border-b ${i === 0 ? 'border-t' : ''}"><img class="h-full w-auto" src="${v['image']}" /></td>
+          <td class="p-5 align-top border-b" ${i === 0 ? 'border-t' : ''}"><img class="h-full w-auto" src="${v['image']}" /></td>
           <td class="p-5 align-top border-b">${k}</td>
           <td class="p-5 align-top border-b"><a class="text-blue-400 font-bold hover:underline" href="${v['website']}" target="_blank">${v['name']}</a></td>
           <td class="p-5 align-top border-b">${v['summary']}</td>

@@ -6,7 +6,7 @@
 
 git init
 git add .
-git commit -m "new comit"
+git commit -m "first comit"
 git branch -M main
-git remote add origin https://github.com/daniarmag/WebEx1.git
+git remote add origin https://github.com/daniarmag/Cryptocurrency-.git
 git push -u origin main
