@@ -16,15 +16,18 @@
   </div>
   <script>
 
-      const row = (k, v, i) => {
-      // complete tr string
-      return `<tr>
-          <td class="p-5 align-top border-b" ${i === 0 ? 'border-t' : ''}"><img class="h-full w-auto" src="${v['image']}" /></td>
-          <td class="p-5 align-top border-b">${k}</td>
-          <td class="p-5 align-top border-b"><a class="text-blue-400 font-bold hover:underline" href="${v['website']}" target="_blank">${v['name']}</a></td>
-          <td class="p-5 align-top border-b">${v['summary']}</td>
-      </tr>`;
+const row = (k, v, i) => {
+    // complete tr string
+    return `<tr>
+        <td class="p-2 align-top border-t"><img class="h-full w-auto" src="${v['image']}" /></td>
+        <td class="p-2 align-top border-t">${k}</td>
+        <td class="p-2 align-top border-t"><a class="text-blue-400 font-bold hover:underline" href="${v['website']}" target="_blank">${v['name']}</a></td>
+        <td class="p-2 align-top border-t">${v['summary']}</td>
+    </tr>`;
 }
+
+
+
 
     const createTable = (data) => {
       // create table string and insert it into "app" div before end
