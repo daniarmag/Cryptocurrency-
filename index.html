@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cryptocurrency Data</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+  <div id="app" class="max-w-[1000px] mx-auto">
+    <h1 class="font-bold text-3xl text-center text-blue-600 my-4">
+      Cryptocurrency Data
+    </h1>
+  </div>
+  <script>
+
+      const row = (k, v, i) => {
+      // complete tr string
+      return `<tr>
+          <td class="w-16 p-2 align-top border-b ${i === 0 ? 'border-t' : ''}"><img class="h-full w-auto" src="${v['image']}" /></td>
+          <td class="p-5 align-top border-b">${k}</td>
+          <td class="p-5 align-top border-b"><a class="text-blue-400 font-bold hover:underline" href="${v['website']}" target="_blank">${v['name']}</a></td>
+          <td class="p-5 align-top border-b">${v['summary']}</td>
+      </tr>`;
+}
+
+    const createTable = (data) => {
+      // create table string and insert it into "app" div before end
+      const tableRows = Object.entries(data)
+        .map(([k, v], i) => row(k, v, i))
+        .join("");
+
+      const table = `<table class="w-full">${tableRows}</table>`;
+      document.getElementById("app").insertAdjacentHTML("beforeend", table);
+    }
+
+    const url = "https://api.mtw-testnet.com/assets/all"
+    fetch(url)
+      .then((response) => {
+        return response.json()
+      })
+      .then((v) => createTable(v))
+      .catch((err) => console.log(err))
+  </script>
+
+  <!-- special scripts for integration in App Gallery 
+  - must be placed at the bottom of the HTML after your code -->
+  <script>
+    // custom config for the MTW app 
+    const mtwAppConfig = {
+      border: true // app border in the MTW page                    
+    }
+
+    ///////////////////////////////////////////////////////
+    // implement this functions in order to use private API        
+    const sendPrivateApiRequest = async () => {
+      // your code here:
+      // sendRequestToParent({ cat: 'getAssets' })
+    }
+
+    const acceptPrivateApiResponse = async (data) => {
+      // process received data here:
+      // console.log(data)
+    }
+
+    // use this in order to send on document load
+    document.addEventListener('DOMContentLoaded', () => {
+      // your code here:
+      //sendRequestToParent({ method: 'getAssets' })
+    })
+  </script>
+  <script src="https://morethanwallet.com/appstore/index.js"></script>
+</body>
+
+</html>
